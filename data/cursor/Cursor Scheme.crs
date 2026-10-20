@@ -1,0 +1,51 @@
+﻿[Help]
+Path=Help.cur
+
+[SizeWE]
+Path=Horizontal Scroll.cur
+
+[Wait]
+Path=Wait.cur
+
+[IBeam]
+Path=Text Select.cur
+
+[Pin]
+Path=Location Select.cur
+
+[SizeAll]
+Path=Open Hand.cur
+
+[Hand]
+Path=Pointer.cur
+
+[No]
+Path=No Drop.cur
+
+[UpArrow]
+Path=Straight Select.cur
+
+[SizeNS]
+Path=Vertical Scroll.cur
+
+[Person]
+Path=Account.cur
+
+[AppStarting]
+Path=App Starting.cur
+
+[Arrow]
+Path=Arrow.cur
+
+[SizeNWSE]
+Path=Resize Diagonal Backward.cur
+
+[Crosshair]
+Path=Crosshair.cur
+
+[SizeNESW]
+Path=Resize Diagonal Forward.cur
+
+[NWPen]
+Path=Handwriting.cur
+

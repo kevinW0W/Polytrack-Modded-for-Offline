@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#253576"/><stop offset=".52" stop-color="#354eaa"/><stop offset="1" stop-color="#5d50ba"/></linearGradient>
+ <radialGradient id="bloom" cx=".22" cy=".2" r=".9"><stop stop-color="#55d7ff" stop-opacity=".34"/><stop offset="1" stop-color="#55d7ff" stop-opacity="0"/></radialGradient>
+ <filter id="glow" x="-.3" y="-.3" width="1.6" height="1.6"><feGaussianBlur stdDeviation="10"/></filter>
+ <clipPath id="squircle"><path d="M256 0C406 0 512 0 512 256s-106 256-256 256S0 406 0 256 106 0 256 0Z"/></clipPath>
+</defs>
+<g clip-path="url(#squircle)">
+ <rect width="512" height="512" fill="url(#glass)"/><rect width="512" height="512" fill="url(#bloom)"/>
+ <path d="M0 0h512v160L0 330Z" fill="#fff" opacity=".055"/>
+ <path d="M75 353V150h59l55-59h129l60 59h60v203h-56a39 39 0 0 0-78 0H209a39 39 0 0 0-78 0Z" fill="#c8e6ff" opacity=".5" filter="url(#glow)"/>
+ <path d="M75 353V150h59l55-59h129l60 59h60v203h-56a39 39 0 0 0-78 0H209a39 39 0 0 0-78 0Z" fill="#f0f6ff"/>
+ <path d="M4 95Q20 10 120 0h272q100 10 116 95" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="5"/>
+</g></svg>

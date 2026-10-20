@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#28346a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PolyTrack">
+  <meta name="description" content="PolyTrack Modded: race custom tracks in your browser.">
+  <title>PolyTrack Modded</title>
+  <link rel="manifest" href="main/manifest.json">
+  <link rel="icon" href="data/images/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="data/apple-touch-icon.png">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+    #screen {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+    /* Tailless Smooth cursor pack: native cursors keep their proper hotspots. */
+    html, body, #screen, #ui, #transition-layer, * {
+      cursor: url("data/cursor/Arrow.cur"), auto !important;
+    }
+    a, button, [role="button"], input[type="button"], input[type="submit"], select {
+      cursor: url("data/cursor/Pointer.cur"), pointer !important;
+    }
+    input, textarea, [contenteditable="true"] {
+      cursor: url("data/cursor/Text Select.cur"), text !important;
+    }
+    [disabled], [aria-disabled="true"] {
+      cursor: url("data/cursor/Not Allowed.cur"), not-allowed !important;
+    }
+    [draggable="true"] { cursor: url("data/cursor/Open Hand.cur"), grab !important; }
+    [draggable="true"]:active { cursor: url("data/cursor/Closed Hand.cur"), grabbing !important; }
+    [data-cursor="account"] { cursor: url("data/cursor/Account.cur"), help !important; }
+    [data-cursor="location"] { cursor: url("data/cursor/Location Select.cur"), crosshair !important; }
+    [data-cursor="handwriting"] { cursor: url("data/cursor/Handwriting.cur"), crosshair !important; }
+    [data-cursor="straight"] { cursor: url("data/cursor/Straight Select.cur"), n-resize !important; }
+    [data-cursor="copy"] { cursor: url("data/cursor/Copy.cur"), copy !important; }
+    [data-cursor="drag-copy"] { cursor: url("data/cursor/Drag Copy.cur"), copy !important; }
+    [data-cursor="alias"] { cursor: url("data/cursor/Alias.cur"), alias !important; }
+    [data-cursor="drag-alias"] { cursor: url("data/cursor/Drag Alias.cur"), alias !important; }
+    [data-cursor="no-drop"] { cursor: url("data/cursor/No Drop.cur"), no-drop !important; }
+    [data-cursor="wait"] { cursor: url("data/cursor/Wait.cur"), wait !important; }
+    [data-cursor="progress"] { cursor: url("data/cursor/App Starting.cur"), progress !important; }
+    [data-cursor="help"] { cursor: url("data/cursor/Help.cur"), help !important; }
+    [data-cursor="cell"] { cursor: url("data/cursor/Cell.cur"), cell !important; }
+    [data-cursor="crosshair"] { cursor: url("data/cursor/Crosshair.cur"), crosshair !important; }
+    [data-cursor="move"] { cursor: url("data/cursor/All Scroll.cur"), all-scroll !important; }
+    [data-cursor="horizontal-scroll"] { cursor: url("data/cursor/Horizontal Scroll.cur"), ew-resize !important; }
+    [data-cursor="vertical-scroll"] { cursor: url("data/cursor/Vertical Scroll.cur"), ns-resize !important; }
+    [data-cursor="resize-column"] { cursor: url("data/cursor/Column Resize.cur"), col-resize !important; }
+    [data-cursor="resize-row"] { cursor: url("data/cursor/Row Resize.cur"), row-resize !important; }
+    [data-cursor="resize-diagonal-backward"] { cursor: url("data/cursor/Resize Diagonal Backward.cur"), nwse-resize !important; }
+    [data-cursor="resize-diagonal-forward"] { cursor: url("data/cursor/Resize Diagonal Forward.cur"), nesw-resize !important; }
+    [data-cursor="zoom-in"] { cursor: url("data/cursor/Zoom In.cur"), zoom-in !important; }
+    [data-cursor="zoom-out"] { cursor: url("data/cursor/Zoom Out.cur"), zoom-out !important; }
+    [data-cursor="horizontal-text"] { cursor: url("data/cursor/Horizontal Text Select.cur"), ew-resize !important; }
+    /* Replace native UI scrollbars only after the custom scrollbar script loads. */
+    #ui.pt-custom-scrollbars, #ui.pt-custom-scrollbars * {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    #ui.pt-custom-scrollbars::-webkit-scrollbar,
+    #ui.pt-custom-scrollbars *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    /* Keep nested game panels touch-scrollable on older and current iOS Safari. */
+    #ui, #ui * {
+      -webkit-overflow-scrolling: touch;
+    }
+</style>
+</head>
+<body>
+  <canvas id="screen"></canvas>
+  <div id="ui"></div>
+  <div id="transition-layer"></div>
+  <script src="java/main.bundle.js" defer></script>
+  <script src="java/controller-support.js" defer></script>
+  <script src="java/custom-scrollbar.js" defer></script>
+  <h1>Yinnotayl PolyTrack</h1>
+  <script>
+    // A service worker inside main/ cannot control this root page on static
+    // hosts. iOS Home Screen installation uses the legacy metadata above.
+  </script>
+</body>
+</html>
