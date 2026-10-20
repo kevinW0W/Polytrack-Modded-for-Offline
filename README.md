@@ -65,7 +65,7 @@ Touch gestures and controls depend on the device and browser.
 
 ### Mobile controls
 
-In **Settings → Mobile Controls**, **Left-handed controls** is off by default. Acceleration and braking are on the right, and steering is on the left. Turn the option on to switch sides. The **⇄** button on the driving HUD also switches the layout. The choice is saved in browser storage for the current site.
+In **Settings → Mobile Controls**, **Left-handed controls** is off by default. Acceleration and braking are on the right, and steering is on the left. Turn the option on to switch sides. The choice is saved in browser storage for the current site.
 
 ### Game controller
 

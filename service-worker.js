@@ -1,5 +1,5 @@
 /* Root-scoped offline cache for the GitHub Pages app. */
-const CACHE_NAME = "polytrack-modded-v5";
+const CACHE_NAME = "polytrack-modded-v6";
 const APP_SHELL = [
   "./index.html",
   "./PolyTracksMain.html",
