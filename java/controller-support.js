@@ -278,7 +278,7 @@
   }
 
   function signal(code, type) {
-    window.dispatchEvent(new KeyboardEvent(type, {
+    document.dispatchEvent(new KeyboardEvent(type, {
       code,
       key: code.startsWith("Arrow") ? code : code.replace(/^Key/, "").toLowerCase(),
       bubbles: true,
