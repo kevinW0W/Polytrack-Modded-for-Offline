@@ -333,18 +333,9 @@
     return Math.max(getInput(pad, bindings[0]), getInput(pad, bindings[1]));
   }
 
-  function dpadPressed(pad, buttonIndex, direction) {
+  function dpadPressed(pad, buttonIndex) {
     const button = pad.buttons[buttonIndex];
-    if (button && (button.pressed || (Number(button.value) || 0) >= 0.7)) return true;
-    // Some unmapped controllers expose the D-pad as the hat axes (6/7).
-    if (pad.mapping !== "standard" && pad.axes.length >= 8) {
-      const value = pad.axes[direction === "left" || direction === "right" ? 6 : 7] || 0;
-      return direction === "left" ? value < -0.7
-        : direction === "right" ? value > 0.7
-        : direction === "up" ? value < -0.7
-        : value > 0.7;
-    }
-    return false;
+    return !!button && (button.pressed || (Number(button.value) || 0) >= 0.7);
   }
 
   function frame() {
@@ -369,7 +360,7 @@
       if (!menuMode && focusedMenuTarget) focusMenuTarget(null);
       if (menuMode) {
         [["navUp", 12, "up"], ["navDown", 13, "down"], ["navLeft", 14, "left"], ["navRight", 15, "right"]].forEach(([id, button, direction]) => {
-          const down = dpadPressed(activePad, button, direction);
+          const down = dpadPressed(activePad, button);
           current[id] = down;
           if (down && !wasDown[id]) { moveMenuFocus(direction); vibrate(activePad); }
         });
