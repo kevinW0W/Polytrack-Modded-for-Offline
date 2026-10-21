@@ -342,7 +342,12 @@
       paintTest(activePad);
       const justCaptured = captureInput(activePad);
       const targets = menuTargets();
-      const menuMode = targets.length > 0;
+      // The racing HUD also has focusable controls (for example, reset and
+      // fullscreen). Its timer identifies an active gameplay view, where
+      // controller bindings must be sent to the vehicle instead of consumed
+      // by menu navigation.
+      const gameplayMode = !!document.querySelector("#ui .timer");
+      const menuMode = targets.length > 0 && !gameplayMode;
       if (!menuMode && focusedMenuTarget) focusMenuTarget(null);
       if (menuMode) {
         [["navUp", 12, "up"], ["navDown", 13, "down"], ["navLeft", 14, "left"], ["navRight", 15, "right"]].forEach(([id, button, direction]) => {
