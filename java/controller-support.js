@@ -34,8 +34,6 @@
   let statusNode = null;
   let capture = null;
   let capturedInput = "";
-  let lastNavigationAt = 0;
-  let lastMenuActivationAt = 0;
   try { preferences = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch (_) {}
   if (!preferences.bindings) preferences.bindings = {};
   ACTIONS.forEach(action => {
@@ -80,10 +78,7 @@
     if (!targets.length) return false;
     let current = targets.indexOf(focusedMenuTarget);
     if (current < 0) current = targets.indexOf(document.activeElement);
-    if (current < 0) {
-      focusMenuTarget(targets[0]);
-      return true;
-    }
+    if (current < 0) current = direction === "up" || direction === "left" ? 0 : -1;
     const origin = current >= 0 ? targets[current].getBoundingClientRect() : null;
     const cx = origin ? origin.left + origin.width / 2 : 0;
     const cy = origin ? origin.top + origin.height / 2 : 0;
@@ -376,12 +371,7 @@
         [["navUp", 12, "up"], ["navDown", 13, "down"], ["navLeft", 14, "left"], ["navRight", 15, "right"]].forEach(([id, button, direction]) => {
           const down = dpadPressed(activePad, button, direction);
           current[id] = down;
-          const now = performance.now();
-          if (down && !wasDown[id] && now - lastNavigationAt >= 160) {
-            moveMenuFocus(direction);
-            lastNavigationAt = now;
-            vibrate(activePad);
-          }
+          if (down && !wasDown[id]) { moveMenuFocus(direction); vibrate(activePad); }
         });
       }
       ACTIONS.forEach(action => {
@@ -396,11 +386,9 @@
         }
         if (capturedInput && getInput(activePad, capturedInput) < 0.35) capturedInput = "";
         if (action.id === "menuSelect" || action.id === "menuBack") {
-          const now = performance.now();
-          if (menuMode && down && !wasDown[action.id] && now - lastMenuActivationAt >= 350) {
+          if (menuMode && down && !wasDown[action.id]) {
             if (action.id === "menuSelect") activateMenuTarget();
             else signal("Escape", "keydown"), signal("Escape", "keyup");
-            lastMenuActivationAt = now;
             vibrate(activePad);
           }
           return;
