@@ -78,7 +78,6 @@ Default racing controls:
 | Steer | Left stick | Left stick |
 | Brake | LT | L2 |
 | Accelerate | RT | R2 |
-| Pause | Menu / Options | Options |
 | Restart | View | Share |
 
 In menus, use the D-pad to move the white focus outline, **A / Cross** to select, and **B / Circle** to go back. Vibration is off by default. The analog test meters show live stick and trigger values when a controller is connected.

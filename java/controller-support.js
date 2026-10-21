@@ -8,7 +8,6 @@
     { id: "left", label: "Vehicle turn left", code: "ArrowLeft", initial: ["a0-", ""] },
     { id: "right", label: "Vehicle turn right", code: "ArrowRight", initial: ["a0+", ""] },
     { id: "reset", label: "Vehicle reset", code: "KeyR", initial: ["b8", ""] },
-    { id: "pause", label: "Pause", code: "Escape", initial: ["b9", ""] },
     { id: "camera", label: "Vehicle cockpit camera", code: "KeyC", initial: ["b3", ""] },
     { id: "menuSelect", label: "Menu select (A / Cross)", code: "Enter", initial: ["b0", ""] },
     { id: "menuBack", label: "Menu back (B / Circle)", code: "Escape", initial: ["b1", ""] }
@@ -371,7 +370,7 @@
           }
           return;
         }
-        if (menuMode && (action.id === "accelerate" || action.id === "brake" || action.id === "left" || action.id === "right" || action.id === "reset" || action.id === "pause" || action.id === "camera")) {
+        if (menuMode && (action.id === "accelerate" || action.id === "brake" || action.id === "left" || action.id === "right" || action.id === "reset" || action.id === "camera")) {
           if (wasDown[action.id]) signal(action.code, "keyup");
           current[action.id] = false;
           return;
