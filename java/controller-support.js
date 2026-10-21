@@ -291,7 +291,10 @@
     const match = /^([ab])(\d+)([+-]?)$/.exec(binding);
     if (!match) return 0;
     const index = Number(match[2]);
-    if (match[1] === "b") return pad.buttons[index] ? pad.buttons[index].value : 0;
+    if (match[1] === "b") {
+      const button = pad.buttons[index];
+      return button ? Math.max(Number(button.value) || 0, button.pressed ? 1 : 0) : 0;
+    }
     const value = pad.axes[index] || 0;
     return match[3] === "-" ? Math.max(0, -value) : Math.max(0, value);
   }
@@ -342,11 +345,12 @@
       paintTest(activePad);
       const justCaptured = captureInput(activePad);
       const targets = menuTargets();
-      // The racing HUD also has focusable controls (for example, reset and
-      // fullscreen). Its timer identifies an active gameplay view, where
-      // controller bindings must be sent to the vehicle instead of consumed
-      // by menu navigation.
-      const gameplayMode = !!document.querySelector("#ui .timer");
+      // The racing HUD can have focusable controls too. Its HUD elements
+      // identify gameplay, where controller bindings go to the vehicle rather
+      // than being consumed by menu navigation.
+      const gameplayMode = !!document.querySelector(
+        "#ui .timer, #ui .time-announcer, #ui .speedometer, #ui .checkpoint, #ui .touch-controls"
+      );
       const menuMode = targets.length > 0 && !gameplayMode;
       if (!menuMode && focusedMenuTarget) focusMenuTarget(null);
       if (menuMode) {
